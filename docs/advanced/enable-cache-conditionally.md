@@ -33,5 +33,13 @@ export default defineNuxtConfig({
     // Caches enabled for anonymous users.
     return true
   }
+
+  // Custom callback that decides the prefix to be used to save/retreive
+  // a cache entry based on the current request. It can also be a constant string
+  cacheKeyPrefix: async function(event) {
+    const lang = await getCurrentLanguage(event)
+
+    return lang
+  }
 }
 ```
